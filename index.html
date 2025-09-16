@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Steam Frame Copium Station</title>
+        <meta
+            name="description"
+            content="The premium copium distribution center for VR enthusiasts desperately hoping Valve will actually announce Steam Frame on Sept 17, 2025."
+        />
+        <meta
+            name="keywords"
+            content="copium, hopium, Steam Frame, Valve Deckard, VR copium, Valve time"
+        />
+        <meta name="author" content="Copium Dealers Anonymous" />
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💨%3C/text%3E%3C/svg%3E"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+            rel="stylesheet"
+            type="text/css"
+        />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Fira+Code:wght@400;600&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            .comic-font {
+                font-family: "Comic Neue", cursive;
+            }
+            .mono-font {
+                font-family: "Fira Code", monospace;
+            }
+            .copium-glow {
+                text-shadow:
+                    0 0 10px #ff6b6b,
+                    0 0 20px #ff6b6b,
+                    0 0 30px #ff6b6b;
+                animation: pulse-copium 2s infinite;
+            }
+            @keyframes pulse-copium {
+                0%,
+                100% {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0.7;
+                }
+            }
+            .floating-slow {
+                animation: float-slow 8s ease-in-out infinite;
+            }
+            @keyframes float-slow {
+                0%,
+                100% {
+                    transform: translateY(0px) rotate(0deg);
+                }
+                50% {
+                    transform: translateY(-15px) rotate(2deg);
+                }
+            }
+            .copium-bg {
+                background: linear-gradient(
+                    135deg,
+                    #1a1a2e 0%,
+                    #16213e 25%,
+                    #0f3460 50%,
+                    #533483 75%,
+                    #7209b7 100%
+                );
+                animation: gradient-shift 10s ease infinite;
+            }
+            @keyframes gradient-shift {
+                0%,
+                100% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+            }
+            .shake {
+                animation: shake 0.5s infinite;
+            }
+            @keyframes shake {
+                0%,
+                100% {
+                    transform: translateX(0);
+                }
+                25% {
+                    transform: translateX(-5px);
+                }
+                75% {
+                    transform: translateX(5px);
+                }
+            }
+            .copium-smoke {
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                background: rgba(255, 255, 255, 0.3);
+                border-radius: 50%;
+                animation: smoke 6s infinite linear;
+                opacity: 0;
+            }
+            @keyframes smoke {
+                0% {
+                    opacity: 1;
+                    transform: translateY(0) scale(0.5);
+                }
+                50% {
+                    opacity: 0.7;
+                    transform: translateY(-50px) scale(1);
+                }
+                100% {
+                    opacity: 0;
+                    transform: translateY(-100px) scale(1.5);
+                }
+            }
+        </style>
+    </head>
+    <body class="min-h-screen copium-bg relative overflow-x-hidden">
+        <div
+            id="copium-particles"
+            class="fixed inset-0 pointer-events-none z-0"
+        ></div>
+
+        <div class="hero min-h-screen relative z-10">
+            <div class="hero-content text-center">
+                <div class="max-w-6xl">
+                    <div class="mb-8">
+                        <div class="flex justify-center mb-6">
+                            <div class="relative">
+                                <div class="text-8xl floating-slow">HOPE</div>
+                                <div
+                                    class="copium-smoke absolute top-0 left-4"
+                                ></div>
+                                <div
+                                    class="copium-smoke absolute top-0 right-4"
+                                    style="animation-delay: 2s"
+                                ></div>
+                            </div>
+                        </div>
+
+                        <h1
+                            class="text-4xl md:text-6xl font-black comic-font copium-glow text-white mb-4"
+                        >
+                            STEAM FRAME COPIUM STATION
+                        </h1>
+                        <h2
+                            class="text-lg md:text-xl comic-font text-red-300 mb-4"
+                        >
+                            WARNING: INDUSTRIAL GRADE HOPIUM DETECTED
+                        </h2>
+
+                        <div class="flex flex-wrap justify-center gap-2 mb-4">
+                            <div
+                                class="badge badge-error badge-lg comic-font animate-pulse"
+                            >
+                                HUFFING COPIUM
+                            </div>
+                            <div
+                                class="badge badge-warning badge-lg comic-font"
+                            >
+                                OVERDOSE RISK: HIGH
+                            </div>
+                            <div class="badge badge-info badge-lg comic-font">
+                                VALVE TIME ACTIVE
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="card bg-base-100/20 backdrop-blur-md shadow-2xl border-2 border-purple-500/50 mb-8"
+                    >
+                        <div class="card-body">
+                            <h3
+                                class="text-2xl font-bold comic-font text-white mb-2"
+                            >
+                                TIME UNTIL HOPIUM INJECTION
+                            </h3>
+                            <div
+                                class="text-sm text-yellow-300 comic-font mb-4"
+                            >
+                                (Or until our dreams are crushed again)
+                            </div>
+                            <div class="flex justify-center">
+                                <div
+                                    class="grid grid-flow-col gap-5 text-center auto-cols-max"
+                                >
+                                    <div
+                                        class="flex flex-col p-2  rounded-box text-neutral-content border"
+                                    >
+                                        <span
+                                            class="countdown font-mono text-5xl"
+                                            id="days"
+                                        >
+                                            <span style="--value: 0"></span>
+                                        </span>
+                                        <span class="text-xs comic-font"
+                                            >days</span
+                                        >
+                                    </div>
+                                    <div
+                                        class="flex flex-col p-2 rounded-box text-neutral-content border"
+                                    >
+                                        <span
+                                            class="countdown font-mono text-5xl"
+                                            id="hours"
+                                        >
+                                            <span style="--value: 0"></span>
+                                        </span>
+                                        <span class="text-xs comic-font"
+                                            >hours</span
+                                        >
+                                    </div>
+                                    <div
+                                        class="flex flex-col p-2 rounded-box text-neutral-content border "
+                                    >
+                                        <span
+                                            class="countdown font-mono text-5xl"
+                                            id="minutes"
+                                        >
+                                            <span style="--value: 0"></span>
+                                        </span>
+                                        <span class="text-xs comic-font"
+                                            >min</span
+                                        >
+                                    </div>
+                                    <div
+                                        class="flex flex-col p-2  rounded-box text-neutral-content border "
+                                    >
+                                        <span
+                                            class="countdown font-mono text-5xl"
+                                            id="seconds"
+                                        >
+                                            <span style="--value: 0"></span>
+                                        </span>
+                                        <span class="text-xs comic-font"
+                                            >sec</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <div class="text-sm text-gray-300 comic-font">
+                                    September 17, 2025 • 5:00 PM PT • During
+                                    Meta Connect
+                                </div>
+                                <div
+                                    class="text-xs text-red-300 comic-font mt-1"
+                                >
+                                    Assuming Valve doesn't pull a "Valve Time"
+                                    on us AGAIN
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="card bg-base-100/20 backdrop-blur-md shadow-2xl border-2 border-red-500/50 mb-8"
+                    >
+                        <div class="card-body">
+                            <h3
+                                class="text-2xl font-bold comic-font text-white mb-4"
+                            >
+                                COPIUM LEVELS
+                            </h3>
+                            <div
+                                class="w-full bg-gray-700 rounded-full h-8 mb-4 relative overflow-hidden"
+                            >
+                                <div
+                                    class="bg-gradient-to-r from-yellow-400 via-red-500 to-red-600 h-8 rounded-full animate-pulse"
+                                    style="width: 95%"
+                                ></div>
+                                <div
+                                    class="absolute inset-0 flex items-center justify-center text-white font-bold comic-font"
+                                >
+                                    MAXIMUM OVERDOSE - 95% PURE HOPIUM
+                                </div>
+                            </div>
+                            <div
+                                class="text-center text-red-300 comic-font text-sm"
+                            >
+                                DANGER: Approaching lethal levels of optimism
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div
+                            class="card bg-base-100/20 backdrop-blur-md shadow-xl border border-green-500/30"
+                        >
+                            <div class="card-body items-center text-center">
+                                <div class="text-4xl mb-2">📱</div>
+                                <h3
+                                    class="card-title text-white comic-font text-green-400"
+                                >
+                                    "It's In The Code!"
+                                </h3>
+                                <p class="text-green-200 comic-font text-sm">
+                                    SteamVR literally has "Roy" controllers and
+                                    "Deckard" references! This time it's REAL!
+                                </p>
+                                <div class="badge badge-success badge-sm mt-2">
+                                    99.9% PURE
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="card bg-base-100/20 backdrop-blur-md shadow-xl border border-yellow-500/30"
+                        >
+                            <div class="card-body items-center text-center">
+                                <div class="text-4xl mb-2">📄</div>
+                                <h3
+                                    class="card-title text-white comic-font text-yellow-400"
+                                >
+                                    "Trademark Filed!"
+                                </h3>
+                                <p class="text-yellow-200 comic-font text-sm">
+                                    STEAM FRAME trademark is OFFICIAL! Valve
+                                    definitely wouldn't file it for nothing...
+                                    right?
+                                </p>
+                                <div class="badge badge-warning badge-sm mt-2">
+                                    PREMIUM GRADE
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="card bg-base-100/20 backdrop-blur-md shadow-xl border border-purple-500/30"
+                        >
+                            <div class="card-body items-center text-center">
+                                <div class="text-4xl mb-2">📅</div>
+                                <h3
+                                    class="card-title text-white comic-font text-purple-400"
+                                >
+                                    "The Pattern!"
+                                </h3>
+                                <p class="text-purple-200 comic-font text-sm">
+                                    They announced Index during F8 2019! Meta
+                                    Connect is PERFECT timing!
+                                </p>
+                                <div
+                                    class="badge badge-secondary badge-sm mt-2"
+                                >
+                                    INDUSTRIAL
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="card bg-base-100/20 backdrop-blur-md shadow-xl border border-blue-500/30 mb-8"
+                    >
+                        <div class="card-body">
+                            <h3
+                                class="card-title text-white comic-font text-blue-400 mb-4"
+                            >
+                                LEAKED SPECS (TRUST ME BRO)
+                            </h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div class="space-y-3 text-sm">
+                                    <div
+                                        class="flex justify-between items-center border-b border-gray-600 pb-2"
+                                    >
+                                        <span class="text-gray-300 comic-font"
+                                            >Chipset:</span
+                                        >
+                                        <span
+                                            class="text-white mono-font bg-blue-900/30 px-2 py-1 rounded"
+                                            >Snapdragon 8 Gen 3</span
+                                        >
+                                    </div>
+                                    <div
+                                        class="flex justify-between items-center border-b border-gray-600 pb-2"
+                                    >
+                                        <span class="text-gray-300 comic-font"
+                                            >Display:</span
+                                        >
+                                        <span
+                                            class="text-white mono-font bg-green-900/30 px-2 py-1 rounded"
+                                            >2160×2160 per eye</span
+                                        >
+                                    </div>
+                                    <div
+                                        class="flex justify-between items-center border-b border-gray-600 pb-2"
+                                    >
+                                        <span class="text-gray-300 comic-font"
+                                            >Refresh:</span
+                                        >
+                                        <span
+                                            class="text-white mono-font bg-purple-900/30 px-2 py-1 rounded"
+                                            >120Hz (allegedly)</span
+                                        >
+                                    </div>
+                                </div>
+                                <div class="space-y-3 text-sm">
+                                    <div
+                                        class="flex justify-between items-center border-b border-gray-600 pb-2"
+                                    >
+                                        <span class="text-gray-300 comic-font"
+                                            >Controllers:</span
+                                        >
+                                        <span
+                                            class="text-white mono-font  px-2 py-1 rounded"
+                                            >"Roy" (copium name)</span
+                                        >
+                                    </div>
+                                    <div
+                                        class="flex justify-between items-center border-b border-gray-600 pb-2"
+                                    >
+                                        <span class="text-gray-300 comic-font"
+                                            >Price:</span
+                                        >
+                                        <span
+                                            class="text-white mono-font bg-yellow-900/30 px-2 py-1 rounded"
+                                            >~$1,200</span
+                                        >
+                                    </div>
+                                    <div
+                                        class="flex justify-between items-center border-b border-gray-600 pb-2"
+                                    >
+                                        <span class="text-gray-300 comic-font"
+                                            >Release:</span
+                                        >
+                                        <span
+                                            class="text-white mono-font bg-gray-900/30 px-2 py-1 rounded"
+                                            >Valve Time™</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <div class="text-xs text-red-300 comic-font">
+                                    Specs subject to "mysterious delays" and
+                                    "technical challenges"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="card bg-base-100/20 backdrop-blur-md shadow-xl border border-orange-500/30 mb-8"
+                    >
+                        <div class="card-body">
+                            <h3
+                                class="card-title text-white comic-font text-orange-400 mb-4"
+                            >
+                                COPIUM SUPPORT GROUP
+                            </h3>
+                            <div class="grid md:grid-cols-2 gap-4 text-sm">
+                                <div class="bg-gray-800/50 p-4 rounded-lg">
+                                    <div class="flex items-start gap-2 mb-2">
+                                        <div class="text-lg">👤</div>
+                                        <div>
+                                            <div
+                                                class="font-bold text-blue-400 comic-font"
+                                            >
+                                                VRAddict2019
+                                            </div>
+                                            <div
+                                                class="text-gray-300 comic-font"
+                                            >
+                                                "I've been huffing Index 2
+                                                copium since 2020. This Steam
+                                                Frame leak has me back on the
+                                                good stuff"
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-800/50 p-4 rounded-lg">
+                                    <div class="flex items-start gap-2 mb-2">
+                                        <div class="text-lg">👤</div>
+                                        <div>
+                                            <div
+                                                class="font-bold text-green-400 comic-font"
+                                            >
+                                                HopeDealer
+                                            </div>
+                                            <div
+                                                class="text-gray-300 comic-font"
+                                            >
+                                                "Guys the trademark is REAL this
+                                                time! I'm mainlining pure hopium
+                                                until September 17th!"
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-800/50 p-4 rounded-lg">
+                                    <div class="flex items-start gap-2 mb-2">
+                                        <div class="text-lg">👤</div>
+                                        <div>
+                                            <div
+                                                class="font-bold text-purple-400 comic-font"
+                                            >
+                                                CopiumChef
+                                            </div>
+                                            <div
+                                                class="text-gray-300 comic-font"
+                                            >
+                                                "I've been cooking up the finest
+                                                artisanal copium for years. This
+                                                September batch is my
+                                                masterpiece!"
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-800/50 p-4 rounded-lg">
+                                    <div class="flex items-start gap-2 mb-2">
+                                        <div class="text-lg">👤</div>
+                                        <div>
+                                            <div
+                                                class="font-bold text-red-400 comic-font"
+                                            >
+                                                RealistDowner
+                                            </div>
+                                            <div
+                                                class="text-gray-300 comic-font"
+                                            >
+                                                "Y'all are overdosing. Valve
+                                                will delay it until 2027 and you
+                                                know it. *inhales copium
+                                                anyway*"
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="text-center text-gray-400">
+                        <p class="comic-font text-sm mb-2">
+                            Premium Copium manufactured in the basements of
+                            /r/ValveIndex since 2019
+                        </p>
+                        <p class="text-xs mb-4">
+                            Not affiliated with Valve Corporation (they don't
+                            even know we exist)
+                        </p>
+                        <div class="flex justify-center gap-4 mb-6">
+                            <button
+                                class="btn btn-ghost btn-sm text-gray-400 hover:text-white comic-font"
+                                onclick="increaseCopium()"
+                            >
+                                Increase Dosage
+                            </button>
+                            <button
+                                class="btn btn-ghost btn-sm text-gray-400 hover:text-white comic-font"
+                                onclick="showReality()"
+                            >
+                                Face Reality
+                            </button>
+                            <button
+                                class="btn btn-ghost btn-sm text-gray-400 hover:text-white comic-font"
+                                onclick="huffCopium()"
+                            >
+                                EMERGENCY HUFF
+                            </button>
+                        </div>
+                        <div class="text-xs text-gray-500 comic-font">
+                            Remember: It's not false hope if you believe hard
+                            enough!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            const targetDate = new Date("2025-09-18T00:00:00Z").getTime();
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = targetDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor(
+                    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+                );
+                const minutes = Math.floor(
+                    (distance % (1000 * 60 * 60)) / (1000 * 60),
+                );
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                document.getElementById("days").innerHTML =
+                    `<span style="--value:${days};"></span>`;
+                document.getElementById("hours").innerHTML =
+                    `<span style="--value:${hours};"></span>`;
+                document.getElementById("minutes").innerHTML =
+                    `<span style="--value:${minutes};"></span>`;
+                document.getElementById("seconds").innerHTML =
+                    `<span style="--value:${seconds};"></span>`;
+
+                if (distance < 0) {
+                    document.querySelector(".hero-content").innerHTML = `
+                        <div class="text-center">
+                            <div class="text-8xl mb-4">💥</div>
+                            <h1 class="text-6xl font-black comic-font copium-glow text-white mb-4">
+                                MOMENT OF TRUTH!
+                            </h1>
+                            <p class="text-2xl comic-font text-yellow-300 mb-6">
+                                Time to find out if our copium was justified!
+                            </p>
+                            <div class="text-lg comic-font text-gray-300">
+                                *frantically refreshing Steam store*
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+
+            function createCopiumParticle() {
+                const particle = document.createElement("div");
+                particle.className = "copium-smoke";
+                particle.style.left = Math.random() * 100 + "vw";
+                particle.style.animationDuration = Math.random() * 3 + 3 + "s";
+                particle.style.animationDelay = Math.random() * 2 + "s";
+
+                const emojis = ["💨", "☁️", "🌟"];
+                particle.innerHTML =
+                    emojis[Math.floor(Math.random() * emojis.length)];
+                particle.style.fontSize = Math.random() * 10 + 10 + "px";
+
+                document
+                    .getElementById("copium-particles")
+                    .appendChild(particle);
+
+                setTimeout(() => {
+                    if (particle.parentNode) {
+                        particle.parentNode.removeChild(particle);
+                    }
+                }, 6000);
+            }
+
+            function increaseCopium() {
+                showToast(
+                    "Copium dosage increased! You're now at 110% pure hopium!",
+                    "alert-success",
+                );
+                document.body.classList.add("shake");
+                setTimeout(() => document.body.classList.remove("shake"), 500);
+            }
+
+            function showReality() {
+                const realities = [
+                    "Valve might just be trolling us again...",
+                    "Remember Artifact? Half-Life 3? Steam Machines?",
+                    "Valve Time means add 2-3 years to any estimate",
+                    "$1,200 for a headset that might not exist...",
+                    "We're all just professional clowns at this point",
+                ];
+                showToast(
+                    realities[Math.floor(Math.random() * realities.length)],
+                    "alert-warning",
+                );
+            }
+
+            function huffCopium() {
+                showToast(
+                    "EMERGENCY COPIUM DEPLOYED! You feel invincible!",
+                    "alert-info",
+                );
+                for (let i = 0; i < 10; i++) {
+                    setTimeout(() => createCopiumParticle(), i * 100);
+                }
+            }
+
+            function showToast(message, alertClass) {
+                const toast = document.createElement("div");
+                toast.className = "toast toast-top toast-center z-50";
+                toast.innerHTML = `
+                    <div class="alert ${alertClass}">
+                        <span class="comic-font text-sm">${message}</span>
+                    </div>
+                `;
+                document.body.appendChild(toast);
+
+                setTimeout(() => {
+                    toast.remove();
+                }, 4000);
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            setInterval(createCopiumParticle, 2000);
+
+            document.addEventListener("keydown", function (e) {
+                switch (e.key.toLowerCase()) {
+                    case "c":
+                        huffCopium();
+                        break;
+                    case "h":
+                        increaseCopium();
+                        break;
+                    case "r":
+                        showReality();
+                        break;
+                }
+            });
+        </script>
+    </body>
+</html>
