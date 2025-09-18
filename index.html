@@ -176,92 +176,8 @@
                         </div>
                     </div>
 
-                    <div
-                        class="card bg-base-100/20 backdrop-blur-md shadow-2xl border-2 border-purple-500/50 mb-8"
-                    >
-                        <div class="card-body">
-                            <h3
-                                class="text-2xl font-bold comic-font text-white mb-2"
-                            >
-                                TIME UNTIL HOPIUM INJECTION
-                            </h3>
-                            <div
-                                class="text-sm text-yellow-300 comic-font mb-4"
-                            >
-                                (Or until our dreams are crushed again)
-                            </div>
-                            <div class="flex justify-center">
-                                <div
-                                    class="grid grid-flow-col gap-5 text-center auto-cols-max"
-                                >
-                                    <div
-                                        class="flex flex-col p-2 rounded-box text-neutral-content border"
-                                    >
-                                        <span
-                                            class="countdown font-mono text-5xl"
-                                            id="days"
-                                        >
-                                            <span style="--value: 0"></span>
-                                        </span>
-                                        <span class="text-xs comic-font"
-                                            >days</span
-                                        >
-                                    </div>
-                                    <div
-                                        class="flex flex-col p-2 rounded-box text-neutral-content border"
-                                    >
-                                        <span
-                                            class="countdown font-mono text-5xl"
-                                            id="hours"
-                                        >
-                                            <span style="--value: 0"></span>
-                                        </span>
-                                        <span class="text-xs comic-font"
-                                            >hours</span
-                                        >
-                                    </div>
-                                    <div
-                                        class="flex flex-col p-2 rounded-box text-neutral-content border"
-                                    >
-                                        <span
-                                            class="countdown font-mono text-5xl"
-                                            id="minutes"
-                                        >
-                                            <span style="--value: 0"></span>
-                                        </span>
-                                        <span class="text-xs comic-font"
-                                            >min</span
-                                        >
-                                    </div>
-                                    <div
-                                        class="flex flex-col p-2 rounded-box text-neutral-content border"
-                                    >
-                                        <span
-                                            class="countdown font-mono text-5xl"
-                                            id="seconds"
-                                        >
-                                            <span style="--value: 0"></span>
-                                        </span>
-                                        <span class="text-xs comic-font"
-                                            >sec</span
-                                        >
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mt-4 text-center">
-                                <div class="text-sm text-gray-300 comic-font">
-                                    Current hopeful estimate is September 17,
-                                    2025 • 5:00 PM PT • During Meta Connect
-                                </div>
-                                <div
-                                    class="text-xs text-red-300 comic-font mt-1"
-                                >
-                                    Assuming Valve doesn't pull a "Valve Time"
-                                    on us AGAIN
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Copium Tracker mount point -->
+                    <div id="copium-tracker"></div>
 
                     <div
                         class="card bg-base-100/20 backdrop-blur-md shadow-2xl border-2 border-red-500/50 mb-8"
@@ -1077,9 +993,9 @@
                                 onclick="huffCopium()"
                             >
                                 <a
-                                  href="https://github.com/DeeKahy/random_countdowns/tree/main"
+                                    href="https://github.com/DeeKahy/random_countdowns/tree/main"
                                 >
-                                  GitHub Repo for when I lose hope
+                                    GitHub Repo for when I lose hope
                                 </a>
                             </button>
                         </div>
@@ -1093,47 +1009,320 @@
         </div>
 
         <script>
-            const targetDate = new Date("2025-09-18T00:00:00Z").getTime();
+            /**
+             * Copium Tracker™ — one-call timers + failed-history
+             * - Renders a live countdown to the nearest future estimate
+             * - Auto-migrates past estimates to a "failed dates" log
+             * - Stores state in localStorage (idempotent)
+             * - Plays nice with your DaisyUI/Tailwind setup
+             *
+             * Call once: createCopiumTracker({ ...config })
+             */
+            (function () {
+                const STORAGE_KEY = "copium.estimates.v1";
 
-            function updateCountdown() {
-                const now = new Date().getTime();
-                const distance = targetDate - now;
+                // --- utilities ---
+                const nowMs = () => Date.now();
+                const toMs = (iso) => new Date(iso).getTime();
+                const fmt = (iso) =>
+                    new Date(iso).toLocaleString(undefined, {
+                        year: "numeric",
+                        month: "short",
+                        day: "2-digit",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        timeZoneName: "short",
+                    });
 
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor(
-                    (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-                );
-                const minutes = Math.floor(
-                    (distance % (1000 * 60 * 60)) / (1000 * 60),
-                );
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                document.getElementById("days").innerHTML =
-                    `<span style="--value:${days};"></span>`;
-                document.getElementById("hours").innerHTML =
-                    `<span style="--value:${hours};"></span>`;
-                document.getElementById("minutes").innerHTML =
-                    `<span style="--value:${minutes};"></span>`;
-                document.getElementById("seconds").innerHTML =
-                    `<span style="--value:${seconds};"></span>`;
-
-                if (distance < 0) {
-                    document.querySelector(".hero-content").innerHTML = `
-                        <div class="text-center">
-                            <div class="text-8xl mb-4">💥</div>
-                            <h1 class="text-6xl font-black comic-font copium-glow text-white mb-4">
-                                MOMENT OF TRUTH!
-                            </h1>
-                            <p class="text-2xl comic-font text-yellow-300 mb-6">
-                                Time to find out if our copium was justified!
-                            </p>
-                            <div class="text-lg comic-font text-gray-300">
-                                *frantically refreshing Steam store*
-                            </div>
-                        </div>
-                    `;
+                function loadStore() {
+                    try {
+                        const raw = localStorage.getItem(STORAGE_KEY);
+                        return raw ? JSON.parse(raw) : { estimates: [] };
+                    } catch {
+                        return { estimates: [] };
+                    }
                 }
-            }
+                function saveStore(store) {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
+                }
+
+                function upsertEstimates(seed) {
+                    const store = loadStore();
+                    const byId = new Map(store.estimates.map((e) => [e.id, e]));
+                    for (const e of seed || []) {
+                        // stable upsert: keep existing status fields if already present
+                        const prev = byId.get(e.id);
+                        byId.set(e.id, {
+                            missed: false,
+                            createdAt:
+                                prev?.createdAt || new Date().toISOString(),
+                            ...prev,
+                            ...e,
+                        });
+                    }
+                    store.estimates = Array.from(byId.values());
+                    saveStore(store);
+                    return store;
+                }
+
+                function pickNext(estimates) {
+                    const t = nowMs();
+                    return estimates
+                        .filter((e) => !e.missed && toMs(e.at) > t)
+                        .sort((a, b) => toMs(a.at) - toMs(b.at))[0];
+                }
+
+                function autosweepMisses(store) {
+                    const t = nowMs();
+                    let changed = false;
+                    for (const e of store.estimates) {
+                        if (!e.missed && toMs(e.at) <= t) {
+                            e.missed = true;
+                            e.missedAt = new Date().toISOString();
+                            changed = true;
+                        }
+                    }
+                    if (changed) saveStore(store);
+                    return changed;
+                }
+
+                function renderUI(cfg, store) {
+                    const mount = document.querySelector(cfg.mount);
+                    if (!mount) return;
+
+                    const next = pickNext(store.estimates);
+                    // top banner + countdown shell (uses your existing #days/#hours/#minutes/#seconds)
+                    mount.innerHTML = `
+      <div class="card bg-base-100/20 backdrop-blur-md shadow-2xl border-2 border-purple-500/50 mb-6">
+        <div class="card-body">
+          <h3 class="text-2xl font-bold comic-font text-white mb-1">NEXT BEST ESTIMATE</h3>
+          <div class="text-sm text-yellow-300 comic-font mb-3">
+            ${next ? `${cfg.emojiNext || "🕒"} ${next.label} • ${fmt(next.at)}` : "No future dates. Add one with window.Copium.addEstimate(...)"}
+          </div>
+          <div class="flex justify-center">
+            <div class="grid grid-flow-col gap-5 text-center auto-cols-max">
+              ${["days", "hours", "minutes", "seconds"]
+                  .map(
+                      (k) => `
+                <div class="flex flex-col p-2 rounded-box text-neutral-content border">
+                  <span class="countdown font-mono text-5xl" id="${cfg.countdownIds[k]}">
+                    <span style="--value:0"></span>
+                  </span>
+                  <span class="text-xs comic-font">${k}</span>
+                </div>
+              `,
+                  )
+                  .join("")}
+            </div>
+          </div>
+          <div class="mt-3 text-center text-xs text-gray-300 comic-font">
+            ${next ? (next.note ? next.note : "&nbsp;") : "&nbsp;"}
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-base-100/20 backdrop-blur-md shadow-2xl border-2 border-red-500/50">
+        <div class="card-body">
+          <h3 class="text-2xl font-bold comic-font text-white mb-2">FAILED POTENTIAL DATES</h3>
+          <div id="failed-list" class="overflow-x-auto">
+            ${renderFailedTable(store)}
+          </div>
+        </div>
+      </div>
+    `;
+                }
+
+                function renderFailedTable(store) {
+                    const failed = store.estimates
+                        .filter((e) => e.missed)
+                        .sort((a, b) => toMs(b.at) - toMs(a.at));
+
+                    if (!failed.length) {
+                        return `<div class="text-sm text-gray-400 comic-font">Nothing failed… yet. 😅</div>`;
+                    }
+
+                    return `
+      <table class="table table-zebra text-sm">
+        <thead>
+          <tr>
+            <th class="comic-font">When it was supposed to happen</th>
+            <th class="comic-font">Label</th>
+            <th class="comic-font">Marked failed</th>
+            <th class="comic-font">Source / Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${failed
+              .map(
+                  (e) => `
+            <tr>
+              <td class="mono-font">${fmt(e.at)}</td>
+              <td>${e.label}</td>
+              <td class="mono-font">${e.missedAt ? fmt(e.missedAt) : "—"}</td>
+              <td class="text-gray-300">${linkify(e.source || e.note || "")}</td>
+            </tr>
+          `,
+              )
+              .join("")}
+        </tbody>
+      </table>
+    `;
+                }
+
+                function linkify(text) {
+                    if (!text) return "";
+                    const urlRegex = /(https?:\/\/[^\s)]+)/g;
+                    return text.replace(
+                        urlRegex,
+                        (u) =>
+                            `<a class="link" href="${u}" target="_blank" rel="noopener">${u}</a>`,
+                    );
+                }
+
+                function setCountdownValues(ids, distanceMs) {
+                    const clamp = (n) => (n < 0 ? 0 : n);
+                    const days = Math.floor(distanceMs / 86400000);
+                    const hours = Math.floor((distanceMs % 86400000) / 3600000);
+                    const minutes = Math.floor((distanceMs % 3600000) / 60000);
+                    const seconds = Math.floor((distanceMs % 60000) / 1000);
+
+                    const write = (id, val) => {
+                        const el = document.getElementById(id);
+                        if (el)
+                            el.innerHTML = `<span style="--value:${clamp(val)};"></span>`;
+                    };
+                    write(ids.days, days);
+                    write(ids.hours, hours);
+                    write(ids.minutes, minutes);
+                    write(ids.seconds, seconds);
+                }
+
+                function startTicker(cfg, store) {
+                    // One interval to rule them all
+                    const tick = () => {
+                        // Sweep anything that just missed
+                        const changed = autosweepMisses(store);
+                        const next = pickNext(store.estimates);
+                        if (changed) {
+                            // Re-render failed table if anything changed
+                            const list = document.getElementById("failed-list");
+                            if (list)
+                                list.innerHTML = renderFailedTable(loadStore());
+                        }
+
+                        if (!next) {
+                            setCountdownValues(cfg.countdownIds, 0);
+                            return;
+                        }
+                        const dist = toMs(next.at) - nowMs();
+                        if (dist <= 0) {
+                            // Will be swept next tick; still clamp countdown to zero
+                            setCountdownValues(cfg.countdownIds, 0);
+                        } else {
+                            setCountdownValues(cfg.countdownIds, dist);
+                        }
+                    };
+
+                    tick();
+                    return setInterval(tick, 1000);
+                }
+
+                // --- public API (single entry) ---
+                window.createCopiumTracker = function createCopiumTracker(
+                    config,
+                ) {
+                    const cfg = {
+                        mount: config.mount || "#copium-tracker",
+                        countdownIds: {
+                            days:
+                                (config.countdownIds &&
+                                    config.countdownIds.days) ||
+                                "days",
+                            hours:
+                                (config.countdownIds &&
+                                    config.countdownIds.hours) ||
+                                "hours",
+                            minutes:
+                                (config.countdownIds &&
+                                    config.countdownIds.minutes) ||
+                                "minutes",
+                            seconds:
+                                (config.countdownIds &&
+                                    config.countdownIds.seconds) ||
+                                "seconds",
+                        },
+                        emojiNext: config.emojiNext || "",
+                    };
+
+                    // Seed initial estimates and persist
+                    const store = upsertEstimates(config.estimates || []);
+
+                    // Build UI + start timer
+                    renderUI(cfg, store);
+                    const handle = startTicker(cfg, store);
+
+                    // Expose tiny helpers for later tweaks
+                    window.Copium = {
+                        addEstimate: (est) => {
+                            const s = upsertEstimates([est]);
+                            renderUI(cfg, s);
+                        },
+                        list: () => loadStore().estimates,
+                        clearHistory: () => {
+                            const s = loadStore();
+                            s.estimates = s.estimates.map((e) => ({
+                                ...e,
+                                missed: false,
+                                missedAt: undefined,
+                            }));
+                            saveStore(s);
+                            renderUI(cfg, s);
+                        },
+                        _stop: () => clearInterval(handle), // for debugging
+                    };
+
+                    return window.Copium;
+                };
+            })();
+
+            // Initialize Copium Tracker
+            createCopiumTracker({
+                // where to render the countdown card + failed table
+                mount: "#copium-tracker",
+
+                // hook into your existing countdown digits
+                countdownIds: {
+                    days: "days",
+                    hours: "hours",
+                    minutes: "minutes",
+                    seconds: "seconds",
+                },
+
+                // seed dates (id must be unique; "at" must be ISO8601 with timezone)
+                estimates: [
+                  {
+                      id: "snapdragon-summit-2025",
+                      label: "Snapdragon Summit",
+                      at: "2025-09-23T00:00:00-05:00",
+                      note: "Possibly waiting for snapdragon 8 elite 2 at the snapdragon summit",
+                      source: "https://www.reddit.com/r/ValveDeckard/comments/1nk0wup/possibly_waiting_for_snapdragon_8_elite_2_at_the/",
+                  },
+                  {
+                        id: "meta-connect-2025",
+                        label: "Meta Connect long-shot reveal (Seattle rumor swirl)",
+                        at: "2025-09-17T17:00:00-07:00",
+                        note: "Assumed Valve crash party",
+                        source: "https://www.pcgamer.com/hardware/vr-hardware/the-valve-rumor-mill-goes-into-overdrive-as-vr-influencers-travel-to-seattle-for-what-seems-likely-to-be-the-imminent-reveal-of-the-steam-frame/",
+                    },
+                    {
+                        id: "holiday-2025",
+                        label: "Holiday 2025 copium drop",
+                        at: "2025-12-24T00:12:00Z",
+                        note: "Because Valve Time™ feels festive 🎄",
+                        source: "internal copium",
+                    },
+                ],
+            });
 
             function createCopiumParticle() {
                 const particle = document.createElement("div");
@@ -1206,8 +1395,6 @@
                 }, 4000);
             }
 
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
             setInterval(createCopiumParticle, 2000);
 
             document.addEventListener("keydown", function (e) {
