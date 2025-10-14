@@ -108,7 +108,7 @@
                   .map(
                       (k) => `
                 <div class="flex flex-col p-2 rounded-box text-neutral-content border">
-                  <span class="countdown font-mono text-5xl" id="${cfg.countdownIds[k]}">
+                  <span class="countdown justify-center font-mono text-5xl" id="${cfg.countdownIds[k]}">
                     <span style="--value:0"></span>
                   </span>
                   <span class="text-xs comic-font">${k}</span>
@@ -146,7 +146,7 @@
                         .map(
                             (k) => `
                       <div class="flex flex-col p-2 rounded-box text-neutral-content border border-blue-400/30">
-                        <span class="countdown font-mono text-2xl" id="${k}-${event.id}">
+                        <span class="countdown justify-center font-mono text-2xl" id="${k}-${event.id}">
                           <span style="--value:0"></span>
                         </span>
                         <span class="text-xs comic-font">${k}</span>
