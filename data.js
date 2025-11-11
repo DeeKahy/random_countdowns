@@ -11,6 +11,18 @@ createCopiumTracker({
   },
   estimates: [
     {
+      id: "november-12-bradly",
+      label: "November 12th",
+      at: "2025-11-12T12:00:00-08:00",
+      note: "No specific time, just the day",
+      sources: [
+        {
+          label: "bradly said so",
+          description: "bradly said so",
+        },
+      ],
+    },
+    {
       id: "meta-connect-2025",
       label: "Meta Connect long-shot reveal (Seattle rumor swirl)",
       at: "2025-09-17T17:00:00-07:00",
