@@ -61,19 +61,7 @@ createCopiumTracker({
         },
       ],
     },
-    {
-      id: "black-friday-2025",
-      label: "Black Friday 2025",
-      at: "2025-11-28T00:00:00-08:00",
-      note: "Traditional shopping frenzy — ideal for hardware launch",
-      sources: [
-        {
-          label: "Community Speculation",
-          url: "https://www.reddit.com/r/ValveDeckard/",
-          description: "Q4 2025 rumors align with Black Friday timing",
-        },
-      ],
-    },
+
     {
       id: "game-awards-2025",
       label: "The Game Awards 2025",
@@ -100,30 +88,51 @@ createCopiumTracker({
         },
       ],
     },
+
     {
-      id: "holiday-2025-release",
-      label: "Likely Steam Frame / Deckard release window",
-      at: "2025-12-24T00:00:00Z",
-      note: "Consensus 'Valve Time™' expectation — Black Friday & Christmas marketing surge",
+      id: "official-announcement-nov-2025",
+      label:
+        "🎉 OFFICIAL ANNOUNCEMENT - Steam Frame, Steam Controller, & Steam Machine!",
+      at: "2025-11-12T10:00:00-08:00",
+      note: "WE WEREN'T DELULU! Valve officially announced all three products for early 2026 release!",
       sources: [
         {
-          label: "Community Synthesis",
-          url: "https://www.reddit.com/r/ValveDeckard/",
-          description: "Aggregated leak analysis",
+          label: "Official Valve Announcement",
+          url: "https://store.steampowered.com/steamframe",
+          description:
+            "Steam Frame, Steam Controller, and Steam Machine announced",
         },
       ],
       updates: [
         {
-          date: "2025-10-08",
-          text: "article claimed Q4 2025 launch window (Black Friday/Christmas), then was removed",
+          date: "2025-11-12",
+          text: "Steam Frame: Wireless VR headset (standalone or PC streaming) - priced under $1000",
         },
         {
-          date: "2025-10-08",
-          text: "Manufacturing leak clarified: Goertek and Taiwan facilities confirmed as OEMs",
+          date: "2025-11-12",
+          text: "Steam Machine: Console-like gaming PC, 6x more powerful than Steam Deck, 4K@60fps",
         },
         {
-          date: "2025-10-08",
-          text: "UploadVR reports headset entered mass production (4-8 week lead time typical)",
+          date: "2025-11-12",
+          text: "Steam Controller: Split gamepad design for VR use",
+        },
+        {
+          date: "2025-11-12",
+          text: "All three products targeting early 2026 release in Steam Deck regions",
+        },
+      ],
+    },
+    {
+      id: "early-2026-release",
+      label:
+        "Steam Frame, Steam Controller & Steam Machine - OFFICIAL EARLY 2026 RELEASE",
+      at: "2026-03-31T23:59:59-07:00",
+      note: "REDEMPTION ARC COMPLETE - Our hopium was justified! Early 2026 release window (Q1 estimate)",
+      sources: [
+        {
+          label: "Valve Official",
+          url: "https://store.steampowered.com/steamframe",
+          description: "Official early 2026 release confirmation",
         },
       ],
     },
